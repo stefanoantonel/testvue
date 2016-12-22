@@ -1,5 +1,17 @@
 <html>
     <body>
         <h2>Hello Gh-Pages</h2>
+        <div id="app">
+            {{ message }}
+        </div>
+        <script src="vue.js"></script>
+        <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!'
+            }
+        })
+        </script>
     </body>
 </html>
