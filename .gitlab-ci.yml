@@ -13,3 +13,11 @@ rspec:
 rubocop:
   script:
     - bundle exec rubocop
+
+pages:
+  stage: deploy
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
