@@ -1,6 +1,6 @@
 pages:
   stage: deploy
-  script: git
+  script: echo OK
   artifacts:
     paths:
     - public
