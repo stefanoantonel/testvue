@@ -1,23 +1,26 @@
 <template>
   <div id="app2">
-    <hello></hello>
-    <section class="column">
-      <hash></hash>
-      <router-link to="/times">/times</router-link>
-      <router-link to="/bpo/times">/bpo/times</router-link>
-    </section>
+    <transition-group appear name="fade">
+      <hello key='hello'></hello>
+      <hash key='hash'></hash>
+      <section class="column" key='section'>
+        <router-link to="/times">/times</router-link>
+        <router-link to="/bpo/times">/bpo/times</router-link>
+        <router-link to="/">/</router-link>
+        <router-link to="/bpo">/bpo</router-link>
+      </section>
+    </transition-group>
   </div>
 </template>
 
 <script>
-import Hello from './hello'
-import hash from './hash'
-// import times from './times'
+const Hello = r => require.ensure([], () => r(require('./hello')), 'group-foo')
+const Hash = r => require.ensure([], () => r(require('./hash')), 'group-foo')
 
 export default {
   name: 'app',
   components: {
-    Hello, hash
+    Hello, Hash
   }
 }
 </script>
@@ -29,12 +32,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .column {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
   align-items: center;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 </style>

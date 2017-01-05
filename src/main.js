@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './components/app'
 import VueRouter from 'vue-router'
-// import Times from './components/times'
 
 Vue.use(VueRouter)
 
@@ -11,11 +10,12 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: App },
-    { path: '/bpo', redirect: '/' },
+    { path: '/bpo', component: App },
     { path: '/times',
       component: function (resolve) {
         require(['./components/times'], resolve)
-      }
+      },
+      alias: '/bpo/times'
     }
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="time">
     <div class="loading" v-if="loading">Loading...</div>
     <div v-if="error" class="error">
       {{ error }}
@@ -18,7 +18,10 @@
 </template>
 
 <script>
-import { getPost } from './api'
+import VueJsonp from 'vue-jsonp'
+import Vue from 'vue'
+
+Vue.use(VueJsonp)
 
 export default {
   name: 'times',
@@ -37,19 +40,15 @@ export default {
   },
   methods: {
     fetchData () {
-      console.log(this)
       this.error = this.post = null
       this.loading = true
-      if (this.$route) {
-        getPost(this.$route.params.id, (err, post) => {
-          this.loading = false
-          if (err) {
-            this.error = err.toString()
-          } else {
-            this.post = post
-          }
-        })
-      }
+      this.$jsonp('http://date.jsontest.com/', {}).then(json => {
+        this.info = json
+        this.loading = false
+      }).catch(err => {
+        // Failed.
+        console.error(err)
+      })
     }
   }
 }
@@ -58,8 +57,7 @@ export default {
 <style>
 .loading {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  font-size: 20px;
 }
 .error {
   color: red;
