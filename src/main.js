@@ -11,6 +11,7 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: App },
+    { path: '/bpo', redirect: '/' },
     { path: '/times',
       component: function (resolve) {
         require(['./components/times'], resolve)
