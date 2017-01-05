@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './components/app'
 import VueRouter from 'vue-router'
-import Times from './components/times'
+// import Times from './components/times'
 
 Vue.use(VueRouter)
 
@@ -11,16 +11,16 @@ const router = new VueRouter({
   mode: 'history',
   routes: [
     { path: '/', component: App },
-    { path: '/bpo', component: App },
-    { path: '/bpo/times', component: Times }
+    { path: '/times',
+      component: function (resolve) {
+        require(['./components/times'], resolve)
+      }
+    }
   ]
 })
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router,
-  components: {
-    'app': App
-  }
+  router
 })
