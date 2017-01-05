@@ -1,19 +1,18 @@
 <template>
-  <div class="time">
+  <div class="posts">
     <div class="loading" v-if="loading">Loading...</div>
     <div v-if="error" class="error">
       {{ error }}
     </div>
-    <transition name="slide">
+    <transition-group name="slide" class="container-transition">
       <!--
         giving the post container a unique key triggers transitions
         when the post id changes.
       -->
-      <div v-if="info" class="content" :key="info.id">
-        <h2>{{ info.time }}</h2>
-        <p>{{ info.date }}</p>
+      <div v-if="posts" v-for='post in posts' class="content" :key="post.id">
+        <h2>{{ post.title }}</h2>
       </div>
-    </transition>
+    </transition-group>
   </div>
 </template>
 
@@ -24,11 +23,11 @@ import Vue from 'vue'
 Vue.use(VueJsonp)
 
 export default {
-  name: 'times',
+  name: 'posts',
   data () {
     return {
       loading: false,
-      info: null,
+      posts: [],
       error: null
     }
   },
@@ -40,15 +39,30 @@ export default {
   },
   methods: {
     fetchData () {
-      this.error = this.post = null
+      this.error = null
+      this.posts = []
       this.loading = true
-      this.$jsonp('http://date.jsontest.com/', {}).then(json => {
-        this.info = json
-        this.loading = false
-      }).catch(err => {
-        // Failed.
+      this.$jsonp('https://jsonplaceholder.typicode.com/posts').then(json => {
+        this.handlePost(json)
+      }, err => {
         console.error(err)
+        // Failed.
       })
+    },
+    handlePost (json) {
+      var posts = this.posts
+      // load in cascade with timeout
+      var i = 0
+      var howManyTimes = json.length
+      function f () {
+        posts.push(json[i])
+        i++
+        if (i < howManyTimes) {
+          setTimeout(f, 50)
+        }
+      }
+      f()
+      this.loading = false
     }
   }
 }
@@ -64,7 +78,6 @@ export default {
 }
 .content {
   transition: all .35s ease;
-  position: absolute;
 }
 .slide-enter {
   opacity: 0;
@@ -73,5 +86,10 @@ export default {
 .slide-leave-active {
   opacity: 0;
   transform: translate(-30px, 0);
+}
+.container-transition {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 </style>
