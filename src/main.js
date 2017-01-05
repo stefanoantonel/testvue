@@ -11,6 +11,8 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: [
+    { path: '/', component: app },
+    { path: '/bpo', component: app },
     { path: '/bpo/times', component: Times }
   ]
 })
@@ -24,6 +26,7 @@ router.beforeEach((to, from, next) => {
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   components: {
     'app': app
   }
