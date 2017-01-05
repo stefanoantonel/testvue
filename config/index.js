@@ -16,6 +16,9 @@ module.exports = {
     productionGzip: false,
     productionGzipExtensions: ['js', 'css']
   },
+  firebase: {
+    assetsPublicPath: '/',
+  },
   dev: {
     env: require('./dev.env'),
     port: 8080,
