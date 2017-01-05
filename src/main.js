@@ -16,6 +16,11 @@ const router = new VueRouter({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  console.debug('To: ', to)
+  console.debug('From: ', from)
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
