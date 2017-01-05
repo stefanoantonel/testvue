@@ -11,7 +11,7 @@ Vue.use(VueRouter)
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/bpo', component: app },
+    { path: '/bpo/', component: app },
     { path: '/bpo/times', component: Times }
   ]
 })
