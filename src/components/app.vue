@@ -3,7 +3,8 @@
     <hello></hello>
     <section class="column">
       <hash></hash>
-      <!--<router-link to="/times">/times</router-link>-->
+      <router-link to="/times">/times</router-link>
+      <router-link to="/bpo/times">/bpo/times</router-link>
     </section>
   </div>
 </template>
