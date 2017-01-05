@@ -37,16 +37,19 @@ export default {
   },
   methods: {
     fetchData () {
+      console.log(this)
       this.error = this.post = null
       this.loading = true
-      getPost(this.$route.params.id, (err, post) => {
-        this.loading = false
-        if (err) {
-          this.error = err.toString()
-        } else {
-          this.post = post
-        }
-      })
+      if (this.$route) {
+        getPost(this.$route.params.id, (err, post) => {
+          this.loading = false
+          if (err) {
+            this.error = err.toString()
+          } else {
+            this.post = post
+          }
+        })
+      }
     }
   }
 }
