@@ -14,8 +14,8 @@
 </template>
 
 <script>
-const Hello = r => require.ensure([], () => r(require('./hello')), 'group-foo')
-const Hash = r => require.ensure([], () => r(require('./hash')), 'group-foo')
+const Hello = require('./hello')
+const Hash = require('./hash')
 
 export default {
   name: 'app',
