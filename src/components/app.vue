@@ -4,8 +4,8 @@
     <hello></hello>
     <section class="column">
       <hash></hash>
-      <times></times>
-      <router-link to="/times">/times</router-link>
+<!--      <times></times>
+      <router-link to="/times">/times</router-link>-->
     </section>
   </div>
 </template>
@@ -13,12 +13,12 @@
 <script>
 import Hello from './hello'
 import hash from './hash'
-import times from './times'
+// import times from './times'
 
 export default {
   name: 'app',
   components: {
-    Hello, hash, times
+    Hello, hash
   }
 }
 </script>
