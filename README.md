@@ -1,9 +1,8 @@
-# Test
+# Testing with VUE.JS
 Vue app generated with vue cli and routes. 
-
-Deployed in two sites: 
-https://antonelepfl.gitlab.io/bpo/
-https://bluepyopt.firebaseapp.com/bpo
+This app is deployed in two sites: 
+* https://antonelepfl.gitlab.io/bpo/
+* https://bluepyopt.firebaseapp.com
 
 # To build for GitLab: 
 ```
@@ -19,12 +18,9 @@ $ npm run build
 ```
 $ npm run firebase 
 ```
-* Login in firebase with (firebase-cli installed)
+* Login in and deploy firebase with (firebase-cli installed)
 ```
 $ sudo npm install -g firebase-cli 
-$ firebase login:cl 
-```
-* Deploy with 
-```
+$ firebase login:cl
 $ firebase deploy
 ```
