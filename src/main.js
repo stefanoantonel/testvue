@@ -16,6 +16,12 @@ const router = new VueRouter({
         require(['./components/times'], resolve)
       },
       alias: '/bpo/times'
+    },
+    { path: '/model-config',
+      component: function (resolve) {
+        require(['./components/model-config'], resolve)
+      },
+      alias: '/bpo/model-config'
     }
   ]
 })

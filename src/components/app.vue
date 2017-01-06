@@ -4,10 +4,11 @@
       <hello key='hello'></hello>
       <hash key='hash'></hash>
       <section class="column" key='section'>
-        <router-link to="/times">/times</router-link>
-        <router-link to="/bpo/times">/bpo/times</router-link>
-        <router-link to="/">/</router-link>
-        <router-link to="/bpo">/bpo</router-link>
+        <router-link to="/times"><md-button class="md-raised">/times</md-button></router-link>
+        <router-link to="/bpo/times"><md-button class="md-raised">/bpo/times</md-button></router-link>
+        <router-link to="/"><md-button class="md-raised">/</md-button></router-link>
+        <router-link to="/bpo"><md-button class="md-raised">/bpo</md-button></router-link>
+        <router-link to="/model-config"><md-button class="md-raised">/model-config</md-button></router-link>
       </section>
     </transition-group>
   </div>
@@ -16,11 +17,15 @@
 <script>
 const Hello = r => require.ensure([], () => r(require('./hello')), 'group-foo')
 const Hash = r => require.ensure([], () => r(require('./hash')), 'group-foo')
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.css'
+import Vue from 'vue'
 
+Vue.use(VueMaterial)
 export default {
-  name: 'app',
+  name: 'app2',
   components: {
-    Hello, Hash
+    Hello, Hash, VueMaterial
   }
 }
 </script>
