@@ -20,7 +20,7 @@ spinner.start()
 
 webpackConfig.output.publicPath = config.firebase.assetsPublicPath
 
-var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+var assetsPath = path.join(config.build.assetsRoot, config.firebase.assetsSubDirectory)
 rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
 cp('-R', 'static/*', assetsPath)
