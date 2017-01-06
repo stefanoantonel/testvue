@@ -8,8 +8,8 @@ This app is deployed in two sites:
 ```
 $ npm run build 
 ```
-* Commit changes and update the mirror repository (https://github.com/antonelepfl/testghpages)
-* Go to GitLab project.
+* Commit changes into master branch and push chages to the repository (https://github.com/antonelepfl/testghpages)
+* Go to GitLab project (this project is a mirror from the github above).
 * Click on Commits 
 * Update (from mirror repository) 
 * Run pipeline form Master
