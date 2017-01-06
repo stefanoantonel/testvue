@@ -5,6 +5,7 @@
       {{ error }}
     </div>
     <transition-group name="slide" class="container-transition">
+      <!--<router-link to="/"><- Home</router-link>-->
       <!--
         giving the post container a unique key triggers transitions
         when the post id changes.
@@ -78,6 +79,7 @@ export default {
 }
 .content {
   transition: all .35s ease;
+  width: 48%;
 }
 .slide-enter {
   opacity: 0;
