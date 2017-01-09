@@ -11,17 +11,18 @@ const router = new VueRouter({
   routes: [
     { path: '/', component: App },
     { path: '/bpo/', component: App },
+    { path: '/testvue/', component: App },
     { path: '/times',
       component: function (resolve) {
         require(['./components/times'], resolve)
       },
-      alias: '/bpo/times'
+      alias: ['/bpo/times', '/testvue/times']
     },
     { path: '/model-config',
       component: function (resolve) {
         require(['./components/model-config'], resolve)
       },
-      alias: '/bpo/model-config'
+      alias: ['/bpo/model-config', '/testvue/model-config']
     }
   ]
 })
