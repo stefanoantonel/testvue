@@ -19,6 +19,9 @@ module.exports = {
   firebase: {
     assetsPublicPath: '/'
   },
+  ghpages: {
+    assetsPublicPath: '/testvue/'
+  },
   dev: {
     env: require('./dev.env'),
     port: 8080,
