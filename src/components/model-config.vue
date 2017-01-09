@@ -1,5 +1,6 @@
 <template>
     <div class="model-config">
+        <h1>Model Configuration</h1>
         <md-input-container>
             <label>Generations</label>
             <md-input type="number"></md-input>

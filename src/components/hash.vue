@@ -1,8 +1,17 @@
 <template>
-    <div>
+    <div class="hash-component">
         <p> Hash: 09097374927403747965932748327423 3473208743247234937259 9327473294 </p>
-  </div>
+    </div>
 </template>
 
 <script>
+export default {
+  name: 'hash'
+}
 </script>
+
+<style>
+.hash-component {
+    padding: 20px;
+}
+</style>

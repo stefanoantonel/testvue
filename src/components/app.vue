@@ -4,11 +4,11 @@
       <hello key='hello'></hello>
       <hash key='hash'></hash>
       <section class="column" key='section'>
-        <router-link to="/times"><md-button class="md-raised">/times</md-button></router-link>
-        <router-link to="/bpo/times"><md-button class="md-raised">/bpo/times</md-button></router-link>
+        <router-link to="/times"><md-button class="md-raised">times</md-button></router-link>
+        <router-link to="/bpo/times"><md-button class="md-raised">bpo/times</md-button></router-link>
         <router-link to="/"><md-button class="md-raised">/</md-button></router-link>
-        <router-link to="/bpo"><md-button class="md-raised">/bpo</md-button></router-link>
-        <router-link to="/model-config"><md-button class="md-raised">/model-config</md-button></router-link>
+        <router-link to="/bpo"><md-button class="md-raised">bpo</md-button></router-link>
+        <router-link to="/model-config"><md-button class="md-raised">model-config</md-button></router-link>
       </section>
     </transition-group>
   </div>
