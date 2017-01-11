@@ -13,6 +13,12 @@
 </template>
 <script>
    import NavigationButtons from './navigation-buttons'
+<<<<<<< HEAD
+=======
+//    var configroutes = require('../assets/routes.json')
+//    var Plotly = r => require.ensure([], () => r(require('plotly.js/lib/core')))
+//    var Plotly = require('plotly.js/lib/core')
+>>>>>>> 089f4b3fc0b42f1747c3f75dc80bfbc183e8cbdb
    import Plotly from 'plotly.js/lib/core'
    import configroutes from '../assets/routes.json'
    const SHOW_FADED = 0.15
