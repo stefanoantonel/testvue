@@ -30,10 +30,13 @@ ul {
 
 li {
   display: inline-block;
-  margin: 0 10px;
 }
 
 a {
   color: #42b983;
+}
+.hello {
+  background-color: #fefff3;
+  margin: 10px;
 }
 </style>

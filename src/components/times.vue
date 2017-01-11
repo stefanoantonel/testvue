@@ -28,7 +28,9 @@
         </transition-group>
       </div>
     </div>
-    <navigation-buttons prev='/model-config' next='/bpo'></navigation-buttons>
+    <navigation-buttons 
+      v-bind:prev='configroutes.home' 
+      v-bind:next='configroutes.modelconfig'></navigation-buttons>
   </div>
 </template>
 
@@ -39,6 +41,7 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import NavigationButtons from './navigation-buttons'
 import Multiselect from 'vue-multiselect'
+var configroutes = require('../assets/routes.json')
 
 Vue.use(VueJsonp)
 Vue.use(VueMaterial)
@@ -52,13 +55,14 @@ export default {
       error: null,
       post: {},
       options: [],
-      isLoading: false
+      isLoading: false,
+      configroutes: configroutes
     }
   },
   components: {
     NavigationButtons, Multiselect
   },
-  created () {
+  mounted () {
     this.fetchData()
   },
   watch: {
@@ -69,7 +73,7 @@ export default {
       this.error = null
       this.posts = []
       this.loading = true
-      this.$jsonp('https://jsonplaceholder.typicode.com/posts').then(json => {
+      this.$jsonp('http://jsonplaceholder.typicode.com/posts').then(json => {
         this.handlePost(json)
         this.post = json[0]
         this.options = json

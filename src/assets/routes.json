@@ -1,0 +1,11 @@
+{
+   "home": "/",
+   "times": "/times",
+   "modelconfig": "/model-config",
+   "traces": "/traces",
+   "bpo": {
+      "home": "/bpo/",
+      "times": "/bpo/times",
+      "modelconfig": "/bpo/model-config"
+   }
+}

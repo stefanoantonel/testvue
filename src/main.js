@@ -3,25 +3,38 @@
 import Vue from 'vue'
 import App from './components/app'
 import VueRouter from 'vue-router'
+var configroutes = require('./assets/routes.json')
 
 Vue.use(VueRouter)
 
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    { path: '/', component: App },
-    { path: '/bpo/', component: App },
-    { path: '/times',
+    { path: configroutes.home,
+      component: App,
+      name: configroutes.home },
+    { path: configroutes.bpo.home,
+      component: App,
+      name: configroutes.bpo.home },
+    { path: configroutes.times,
       component: function (resolve) {
         require(['./components/times'], resolve)
       },
-      alias: '/bpo/times'
+      alias: configroutes.bpo.times,
+      name: configroutes.times
     },
-    { path: '/model-config',
+    { path: configroutes.modelconfig,
       component: function (resolve) {
         require(['./components/model-config'], resolve)
       },
-      alias: '/bpo/model-config'
+      alias: configroutes.bpo.modelconfig,
+      name: configroutes.modelconfig
+    },
+    { path: configroutes.traces,
+      component: function (resolve) {
+        require(['./components/traces'], resolve)
+      },
+      name: configroutes.traces
     }
   ]
 })
@@ -29,5 +42,9 @@ const router = new VueRouter({
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  router
+  router,
+  data () {
+    return {
+    }
+  }
 })

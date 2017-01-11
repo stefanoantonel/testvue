@@ -13,5 +13,7 @@ export default {
 <style>
 .hash-component {
     padding: 20px;
+    background-color: #fffbf3;
+    margin: 10px;
 }
 </style>

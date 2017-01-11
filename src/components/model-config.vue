@@ -9,7 +9,9 @@
             <label>Offsprings</label>
             <md-input type="number"></md-input>
         </md-input-container>
-        <navigation-buttons prev='/' next='/times'></navigation-buttons>
+        <navigation-buttons 
+            v-bind:prev='configroutes.times' 
+            v-bind:next='configroutes.traces'></navigation-buttons>
     </div>
 </template>
 <script>
@@ -17,6 +19,7 @@ import Vue from 'vue'
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import NavigationButtons from './navigation-buttons'
+var configroutes = require('../assets/routes.json')
 
 Vue.use(VueMaterial)
 
@@ -24,6 +27,7 @@ export default {
   name: 'model-config',
   data () {
     return {
+        configroutes: configroutes
     }
   },
   components: {
