@@ -7,23 +7,8 @@ class Submission(object):
     ENDPOINT = 'https://bbp.epfl.ch/edx-single-cell/answer'
 
     def __init__(self):
-        self.button = widgets.Button(
-            description='Submit results',
-            button_style='info',
-            icon='check',
-            layout=widgets.Layout(margin='10px 0px 0px 75px')
-        )
-        self.button.on_click(self.submit_answer)
-
-        self.answer_input = widgets.Textarea(
-            value='',
-            placeholder='Paste answer(s)',
-            description='Answer:',
-            layout=widgets.Layout(width='99%')
-        )
-
         style = widgets.HTML('''<style>
-            .custom-inputs .errors { color: #d9534f; }
+            .custom-inputs .errors { color: #d9534f; font-size: 14px; }
             .custom-inputs .logs { margin: 10px 0 0 90px; }
             .custom-inputs .success { color: #468d89; }
             .custom-inputs .form-control { width: 80%; margin-bottom: 10px; }
@@ -31,27 +16,42 @@ class Submission(object):
         </style>''')
 
         self.messages = widgets.HTML()
-        self.answers_list = widgets.HTML() # to always keep on top
+
+        output = [style]
+
+        # check if the submission information was set correctly
+        if not 'userid' in globals() or not 'exerciseid' in globals():
+            self.show_message('User or Exercise were not setup correctly', 'errors')
+            output.append(self.messages)
+
+        else:
+            self.button = widgets.Button(
+                description='Submit results',
+                button_style='info',
+                icon='check',
+                layout=widgets.Layout(margin='10px 0px 0px 75px')
+            )
+            self.button.on_click(self.submit_answer)
+            
+            self.answer_input = widgets.Textarea(
+                value='',
+                placeholder='Paste answer(s)',
+                description='Answer:',
+                layout=widgets.Layout(width='99%')
+            )
+
+            self.answers_list = widgets.HTML() # to always keep on top
+
+            output.append(self.answer_input)
+            output.append(self.button)
+            output.append(self.answers_list)
+            output.append(self.messages)
 
         self.inputs = widgets.VBox(
-            (self.answer_input,
-             self.button,
-             self.answers_list,
-             self.messages,
-             style
-            ),
+            children=output,
             layout=widgets.Layout(margin='10px 0px 10px 0px')
         )
-
         self.inputs.add_class('custom-inputs')
-
-        display(Javascript('''
-            var userId = IPython.notebook.metadata.userid
-            var exerciseId = IPython.notebook.metadata.exerciseid
-            IPython.notebook.kernel.execute('userid=' + userId);
-            IPython.notebook.kernel.execute('exerciseid=' + exerciseId);
-        '''))
-
         display(self.inputs)
 
     def submit_answer(self, value):
@@ -94,3 +94,12 @@ class Submission(object):
     def show_answers(self, answers):
         msg = '<div class="logs answers">Your answer(s): %s</div>' % answers
         self.answers_list.value = msg
+
+# set the variables for submission
+display(Javascript('''
+    var userId = IPython.notebook.metadata.userid
+    var exerciseId = IPython.notebook.metadata.exerciseid
+    IPython.notebook.kernel.execute('userid = ' + userId);
+    console.log(`U: ${userId} E: ${exerciseId}`);
+    IPython.notebook.kernel.execute('exerciseid = ' + exerciseId);
+'''))
