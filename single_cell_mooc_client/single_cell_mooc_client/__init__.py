@@ -1,5 +1,6 @@
 import ipywidgets as widgets
 import requests
+import time
 from IPython.display import clear_output, display, Javascript
 
 
@@ -18,6 +19,9 @@ class Submission(object):
         self.messages = widgets.HTML()
 
         output = [style]
+
+        print('userid: %s' % userid)
+        print('burro %s' % burro)
 
         # check if the submission information was set correctly
         if not 'userid' in globals() or not 'exerciseid' in globals():
